@@ -1,11 +1,14 @@
 {
   "name": "sealious-example-app",
-  "version": "0.0.4",
+  "version": "0.1.4",
   "description": "",
   "main": "app.config.json",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kuba Orlik <groovy354@gmail.com> (https://www.facebook.com/groovy354)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies":{
+  	"sealious": "latest"
+  }
 }
