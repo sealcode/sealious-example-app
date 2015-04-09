@@ -8,7 +8,8 @@
   },
   "author": "Kuba Orlik <groovy354@gmail.com> (https://www.facebook.com/groovy354)",
   "license": "ISC",
-  "dependencies":{
-  	"sealious": "latest"
+  "dependencies": {
+    "chat": "file:modules/chat",
+    "sealious": "latest"
   }
 }

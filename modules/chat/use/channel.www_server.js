@@ -3,9 +3,6 @@ var path = require("path");
 
 module.exports = function(www_server, dispatcher, dependencies){
 
-	var public_dir = path.resolve(module.filename, "../../../../public");
-	www_server.static_route(public_dir, "");
-
 	www_server.route({
 		method: "GET", 
 		path: "/api/v1/chat/conversation/{id}/messages",
