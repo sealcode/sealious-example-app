@@ -16,7 +16,8 @@ var form_entry = new Sealious.ChipTypes.ResourceType("form_entry");
 form_entry.add_fields([
 	{name: "first-name", type: "text", required: true, params: {max_length: 3}},
 	{name: "last-name", type: "text", required: true},
-	{name: "PESEL", type: "text", required: true}
+	{name: "PESEL", type: "text", required: true},
+	{name: "favorite-color", type: "color"}
 ])
 
 var rest = app.ChipManager.get_chip("channel", "rest");
