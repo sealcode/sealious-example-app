@@ -2,12 +2,12 @@ var path = require("path");
 
 var Sealious = require("sealious");
 
-/*
-var mode = process.argv[2]==undefined? "local": "distibuted";
-var layer_name = process.argv[2];
-*/
 
-var app = new Sealious.App(__dirname+"/package.json"/*, mode, layer_name*/);
+var mode = process.argv[2]==undefined? "local": "distibuted";
+var layer_name = process.argv[3];
+
+
+var app = new Sealious.App(__dirname+"/package.json", mode, layer_name);
 
 var www_server = app.ChipManager.get_chip("channel", "www_server");
 

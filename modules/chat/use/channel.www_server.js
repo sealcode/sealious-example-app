@@ -18,7 +18,7 @@ module.exports = function(www_server, dispatcher, dependencies){
 		method: "GET",
 		path: "/api/v1/chat/conversation/mine",
 		handler: function(request, reply){
-			var me = www_server.get_user_id(request.state.PrometheusSession);
+			var me = www_server.get_user_id(request.state.SealiousSession);
 			me = me.toString();
 			console.log(me);
 			var p1 = dispatcher.resources.find({user2: me}, "chat_conversation");
