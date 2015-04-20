@@ -7,7 +7,7 @@ var mode = process.argv[2]==undefined? "local": "distibuted";
 var layer_name = process.argv[3];
 
 
-var app = new Sealious.App(__dirname+"/package.json", mode, layer_name);
+var app = new Sealious.App(path.resolve(__dirname, "./package.json"), mode, layer_name);
 
 var www_server = app.ChipManager.get_chip("channel", "www_server");
 
