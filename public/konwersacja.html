@@ -116,9 +116,15 @@ function readMessages() {
     $.get(base_url, function(data) {
     	$(".loading-container")[0].classList.add("not-loading");
         var checkState = false;
-        console.log(data);
+        var lastMessageInd = -1;
+        for(var i in data){
+            if(lastMessageId == data[i].id){
+                lastMessageInd = i;
+                break;
+            }
+        }
         for (var i in data) {
-            if (lastMessageId < data[i].id) {
+            if (lastMessageInd < i) {
                 var entry = data[i];
                 var node;
                 if (entry.message.trim() != "") {

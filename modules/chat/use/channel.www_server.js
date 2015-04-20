@@ -7,7 +7,7 @@ module.exports = function(www_server, dispatcher, dependencies){
 		method: "GET", 
 		path: "/api/v1/chat/conversation/{id}/messages",
 		handler: function(request, reply){
-			dispatcher.resources.find({conversation_id: parseInt(request.params.id)}, "chat_message")
+			dispatcher.resources.find({conversation_id: request.params.id}, "chat_message")
 				.then(function(resources){
 					reply(resources);
 				})
