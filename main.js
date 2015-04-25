@@ -11,6 +11,13 @@ var app = new Sealious.App(path.resolve(__dirname, "./package.json"), mode, laye
 
 var www_server = app.ChipManager.get_chip("channel", "www_server");
 
+var stoisko = new Sealious.ChipTypes.ResourceType("stoisko");
+
+stoisko.add_fields([
+	{name: "nazwa", type: "text", required: "true"},
+	{name: "kolor", type: "color", required: "true"}
+]);
+
 var form_entry = new Sealious.ChipTypes.ResourceType("form_entry");	
 
 form_entry.add_fields([
@@ -19,6 +26,12 @@ form_entry.add_fields([
 	{name: "PESEL", type: "text", required: true},
 	{name: "favorite-color", type: "color"}
 ])
+
+form_entry.add_references([
+   { name: "stoisko",
+     allowed_types: ["stoisko"]
+	}
+]);
 
 var rest = app.ChipManager.get_chip("channel", "rest");
 
