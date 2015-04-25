@@ -1,0 +1,16 @@
+<html>
+	<head>
+	<title>Reference test</title>
+	</head>
+	<body>
+		<form method="POST" action="/api/v1/form_entry">
+			<input type="text" name="first-name" value="Nini"/>
+			<input type="text" name="last-name" value="Nono"/>
+			<input type="text" name="PESEL" value="123456678"/>
+			<input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<input type="text" name="stoisko[data][nazwa]" value="hamster"/>
+			<input type="text" name="stoisko[data][kolor]" value="brown"/>
+			<input type="submit"/>
+		</form>
+	</body>
+</html>
