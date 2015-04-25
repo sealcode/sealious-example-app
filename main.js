@@ -21,17 +21,20 @@ stoisko.add_fields([
 var form_entry = new Sealious.ChipTypes.ResourceType("form_entry");	
 
 form_entry.add_fields([
-	{name: "first-name", type: "text", required: true, params: {max_length: 3}},
+	{name: "first-name", type: "text", required: true, params: {max_length: 5}},
 	{name: "last-name", type: "text", required: true},
 	{name: "PESEL", type: "text", required: true},
-	{name: "favorite-color", type: "color"}
+	{name: "favorite-color", type: "color"},
+	{name: "stoisko", type: "reference", params:{allowed_types:["stoisko"]}}
 ])
 
+/*
 form_entry.add_references([
    { name: "stoisko",
      allowed_types: ["stoisko"]
 	}
 ]);
+*/
 
 var rest = app.ChipManager.get_chip("channel", "rest");
 
