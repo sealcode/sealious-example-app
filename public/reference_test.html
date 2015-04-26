@@ -1,0 +1,185 @@
+<html>
+	<head>
+	<title>Reference test</title>
+	<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<style scoped>
+		label{
+			display:block;
+		}
+		.bad{
+			border-color:red;
+			background-color:#FFE6E6;
+		}
+		</style>
+		<h1>Reference REST API test</h1>
+		<h2>Insert a new object as a reference field value:</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			&lt;input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<div style="padding-left:3rem">
+				<label>
+					stoisko[data][nazwa]:
+					<input type="text" name="stoisko[data][nazwa]" value="hamster"/>
+				</label>
+				<label>
+					stoisko[data][kolor]:
+					<input type="text" name="stoisko[data][kolor]" value="brown"/>
+				</label>
+			</div>
+
+			<input type="submit"/>
+		</form>
+		<h2>Insert an <strong><i>ID</i></strong> of an existing resource as a reference field value:</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			<label>
+				stoisko:
+				<input type="text" name="stoisko" value="psy0awtsek"/>
+			</label>
+			<input type="submit"/>
+		</form>
+		<h2>Insert an <strong><i>ID</i></strong> of a non-existing resource as a reference field value (should return an error):</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			<label>
+				stoisko:
+				<input type="text" name="stoisko" value="bad-id" class="bad"/>
+			</label>
+			<input type="submit"/>
+		</form>
+		<h2>Missing reference field (should return an error):</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			<input type="submit"/>
+		</form>
+		<h2>Nested references:</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			&lt;input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<div style="padding-left:3rem">
+				<label>
+					stoisko[data][nazwa]:
+					<input type="text" name="stoisko[data][nazwa]" value="hamster"/>
+				</label>
+				<label>
+					stoisko[data][kolor]:
+					<input type="text" name="stoisko[data][kolor]" value="brown"/>
+				</label>
+				&lt;input type="hidden" name="stoisko[data][firma][type]" value="firma"/>
+				<input type="hidden" name="stoisko[data][firma][type]" value="firma"/>
+				<div style="padding-left:3rem">
+					<label>
+						stoisko[data][firma][data][nazwa]:
+						<input type="text" name="stoisko[data][firma][data][nazwa]" value="Pyrkon"/>
+					</label>
+					<label>
+						stoisko[data][firma][data][logo]:
+						<input type="text" name="stoisko[data][firma][data][logo]" value="http://pyrkon.pl/2015/layout/2015/logo_pl.png"/>
+					</label>
+				</div>
+			</div>
+
+			<input type="submit"/>
+		</form>
+		<h2>Bad input on nested reference field:</h2>
+		<form method="POST" action="/api/v1/form_entry">
+			<label> 
+				first-name:
+				<input type="text" name="first-name" value="Nini"/>
+			</label>
+			<label>
+				last-name:
+				<input type="text" name="last-name" value="Nono"/>
+			</label>
+			<label>
+				PESEL:
+				<input type="text" name="PESEL" value="123456678"/>
+			</label>
+			&lt;input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<input type="hidden" name="stoisko[type]" value="stoisko"/>
+			<div style="padding-left:3rem">
+				<label>
+					stoisko[data][nazwa]:
+					<input type="text" name="stoisko[data][nazwa]" value="hamster"/>
+				</label>
+				<label>
+					stoisko[data][kolor]:
+					<input type="text" name="stoisko[data][kolor]" value="brown"/>
+				</label>
+				&lt;input type="hidden" name="stoisko[data][firma][type]" value="firma"/>
+				<input type="hidden" name="stoisko[data][firma][type]" value="firma"/>
+				<div style="padding-left:3rem">
+					<label>
+						stoisko[data][firma][data][nazwa]:
+						<input type="text" name="stoisko[data][firma][data][nazwa]" value="this-text-is-toooooooo-loooong" class="bad"/>
+					</label>
+					<label>
+						stoisko[data][firma][data][logo]:
+						<input type="text" name="stoisko[data][firma][data][logo]" value="http://pyrkon.pl/2015/layout/2015/logo_pl.png"/>
+					</label>
+				</div>
+			</div>
+
+			<input type="submit"/>
+		</form>
+	</body>
+</html>
