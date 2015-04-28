@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>Reference test</title>
+		<link rel="stylesheet" href="/style.css">
+	</head>
+	<body>
+		<h1>Test html stripping</h1>
+		<p>
+			If you write html in this box, the server should strip all html tags.
+		</p>
+		<form action = "/api/v1/no_html" method="POST">
+			<input type="text" name="text"/>
+			<input type="submit"/>
+		</form>
+	</body>
+</html>
