@@ -12,15 +12,12 @@ var app = new Sealious.App(path.resolve(__dirname, "./package.json"), mode, laye
 var www_server = app.ChipManager.get_chip("channel", "www_server");
 
 var firma = new Sealious.ChipTypes.ResourceType("firma");
-
 firma.add_fields([
 	{name: "nazwa", type: "text", required: "true", params:{max_length:6}},
 	{name: "logo", type: "text", required: "true"}
 ]);
 
-
 var stoisko = new Sealious.ChipTypes.ResourceType("stoisko");
-
 stoisko.add_fields([
 	{name: "nazwa", type: "text", required: "true"},
 	{name: "kolor", type: "color", required: "true"},
@@ -28,7 +25,6 @@ stoisko.add_fields([
 ]);
 
 var form_entry = new Sealious.ChipTypes.ResourceType("form_entry");	
-
 form_entry.add_fields([
 	{name: "first-name", type: "text", required: true, params: {max_length: 5}},
 	{name: "last-name", type: "text", required: true},
@@ -38,10 +34,14 @@ form_entry.add_fields([
 ])
 
 var no_html = new Sealious.ChipTypes.ResourceType("no_html");	
-
 no_html.add_fields([
 	{name: "text", type: "text", required: true, params: {strip_html: true}},
 ])
+
+var float_type = new Sealious.ChipTypes.ResourceType("float_type");
+float_type.add_fields([
+	{name: "number", type: "float", required: true}
+]);
 
 var rest = app.ChipManager.get_chip("channel", "rest");
 
@@ -49,6 +49,7 @@ rest.add_path("/api/v1/form_entry", "form_entry");
 rest.add_path("/api/v1/stoiska", "stoisko");
 rest.add_path("/api/v1/firmy", "firma");
 rest.add_path("/api/v1/no_html", "no_html");
+rest.add_path("/api/v1/float_type", "float_type");
 
 www_server.static_route(path.resolve( __dirname, "./public"), "");
 
