@@ -45,7 +45,8 @@ float_type.add_fields([
 
 var date = new Sealious.ChipTypes.ResourceType("date");
 date.add_fields([
-	{name: "date", type: "date", required: true}
+	{name: "date", type: "date", required: false},
+	{name: "datetime", type: "datetime", required: true}
 ]);
 
 
