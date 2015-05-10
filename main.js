@@ -7,9 +7,9 @@ var mode = process.argv[2]==undefined? "local": "distibuted";
 var layer_name = process.argv[3];
 
 
-var app = new Sealious.App(path.resolve(__dirname, "./package.json"), mode, layer_name);
+Sealious.init(mode, layer_name);
 
-var www_server = app.ChipManager.get_chip("channel", "www_server");
+var www_server = Sealious.ChipManager.get_chip("channel", "www_server");
 
 var firma = new Sealious.ChipTypes.ResourceType("firma");
 firma.add_fields([
@@ -50,7 +50,8 @@ date.add_fields([
 ]);
 
 
-var rest = app.ChipManager.get_chip("channel", "rest");
+var rest = Sealious.ChipManager.get_chip("channel", "rest");
+
 
 rest.add_path("/api/v1/form_entry", "form_entry");
 rest.add_path("/api/v1/stoiska", "stoisko");
@@ -61,5 +62,5 @@ rest.add_path("/api/v1/date", "date");
 
 www_server.static_route(path.resolve( __dirname, "./public"), "");
 
-app.start();
+Sealious.start();
 
