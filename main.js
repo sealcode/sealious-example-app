@@ -38,11 +38,6 @@ no_html.add_fields([
 	{name: "text", type: "text", required: true, params: {strip_html: true}},
 ])
 
-var float_type = new Sealious.ChipTypes.ResourceType("float_type");
-float_type.add_fields([
-	{name: "number", type: "float", required: true}
-]);
-
 var date = new Sealious.ChipTypes.ResourceType("date");
 date.add_fields([
 	{name: "date", type: "date", required: false},
@@ -57,7 +52,6 @@ rest.add_path("/api/v1/form_entry", "form_entry");
 rest.add_path("/api/v1/stoiska", "stoisko");
 rest.add_path("/api/v1/firmy", "firma");
 rest.add_path("/api/v1/no_html", "no_html");
-rest.add_path("/api/v1/float_type", "float_type");
 rest.add_path("/api/v1/date", "date");
 
 www_server.static_route(path.resolve( __dirname, "./public"), "");
