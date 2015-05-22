@@ -3,6 +3,7 @@ var path = require("path");
 var Sealious = require("sealious");
 
 
+
 var mode = process.argv[2]==undefined? "local": "distibuted";
 var layer_name = process.argv[3];
 
@@ -11,18 +12,27 @@ Sealious.init(mode, layer_name);
 
 var www_server = Sealious.ChipManager.get_chip("channel", "www_server");
 
-var firma = new Sealious.ChipTypes.ResourceType("firma");
-firma.add_fields([
-	{name: "nazwa", type: "text", required: "true", params:{max_length:6}},
-	{name: "logo", type: "text", required: "true"}
-]);
+var firma = new Sealious.ChipTypes.ResourceType("firma", {
+	fields:[
+		{name: "nazwa", type: "text", required: "true", params:{max_length:6}},
+		{name: "logo", type: "text", required: "true"},	
+	],
+	access_strategy: "public"
+});
 
-var stoisko = new Sealious.ChipTypes.ResourceType("stoisko");
-stoisko.add_fields([
-	{name: "nazwa", type: "text", required: "true"},
-	{name: "kolor", type: "color", required: "true"},
-	{name: "firma", type: "reference", required: false, params:{allowed_types:["firma"]}}
-]);
+var stoisko = new Sealious.ChipTypes.ResourceType("stoisko", {
+	fields: [
+		{name: "nazwa", type: "text", required: "true"},
+		{name: "kolor", type: "color", required: "true"},
+		{name: "firma", type: "reference", required: false, params:{allowed_types:["firma"]}}
+	],
+	/*access_strategy: {
+		create: "public",
+		delete: "noone",
+		default: "public"
+	}*/
+	access_strategy: "noone",
+});
 
 var form_entry = new Sealious.ChipTypes.ResourceType("form_entry");	
 form_entry.add_fields([
