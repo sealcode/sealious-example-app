@@ -54,15 +54,16 @@ date.add_fields([
 	{name: "datetime", type: "datetime", required: true}
 ]);
 
+var simple_file = new Sealious.ChipTypes.ResourceType("simple_file", {
+	fields: [
+		{name: "plik", type: "file"},
+		{name: "opis", type: "text"},
+	]
+});
+
 
 var rest = Sealious.ChipManager.get_chip("channel", "rest");
-
-
-rest.add_path("/api/v1/form_entry", "form_entry");
-rest.add_path("/api/v1/stoiska", "stoisko");
-rest.add_path("/api/v1/firmy", "firma");
-rest.add_path("/api/v1/no_html", "no_html");
-rest.add_path("/api/v1/date", "date");
+rest.set_url_base("/api/v1");
 
 www_server.static_route(path.resolve( __dirname, "./public"), "");
 
