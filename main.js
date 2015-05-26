@@ -53,14 +53,7 @@ var simple_file = new Sealious.ChipTypes.ResourceType("simple_file", {
 
 
 var rest = Sealious.ChipManager.get_chip("channel", "rest");
-
-
-rest.add_path("/api/v1/form_entry", "form_entry");
-rest.add_path("/api/v1/stoiska", "stoisko");
-rest.add_path("/api/v1/firmy", "firma");
-rest.add_path("/api/v1/no_html", "no_html");
-rest.add_path("/api/v1/date", "date");
-rest.add_path("/api/v1/simple_file", "simple_file");
+rest.set_url_base("/api/v1");
 
 www_server.static_route(path.resolve( __dirname, "./public"), "");
 
