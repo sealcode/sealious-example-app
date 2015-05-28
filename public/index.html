@@ -50,7 +50,7 @@
 Auth.redirect_if_not_logged_in();
 
 Auth.get_user_data(function(data) {
-    $(".insert-user-name").html(data.username);
+    $(".insert-user-name").html(data.body.username);
 });
 </script>
 
